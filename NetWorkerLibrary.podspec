@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "NetWorkerLibrary"
-  spec.version      = "0.1.0"
+  spec.version      = "0.1.1"
   spec.summary      = "Library for Network Layer"
 
   # This description is used to generate tags and improve search results.
