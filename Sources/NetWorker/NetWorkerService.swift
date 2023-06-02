@@ -5,7 +5,7 @@
 //  Created by Полина Скалкина on 18.03.2023.
 //
 
-public class NetworkService<Model: Decodable>: NetworkServiceProtocol {
+public class NetWorkerService: NetWorkerServiceProtocol {
   let host: String
 
   private lazy var opQueue = FetchingOperations()
@@ -16,12 +16,12 @@ public class NetworkService<Model: Decodable>: NetworkServiceProtocol {
     self.host = host
   }
 
-  func perform(
+  func perform<Model>(
     type: RequestType,
     path: String,
     params: [String: String],
     completion: @escaping (Result<Model, NetworkFetchingError>) -> ()
-  ) {
+  ) where Model : Decodable {
     let operation = FetchingDataOperation(
       request: requestCreator.createRequest(type: type, host: host, path: path, params: params),
       delayCounter: delayCounter,
