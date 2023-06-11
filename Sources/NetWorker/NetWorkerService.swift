@@ -16,7 +16,7 @@ public class NetWorkerService: NetWorkerServiceProtocol {
     self.host = host
   }
 
-  func perform<Model>(
+  public func perform<Model>(
     type: RequestType,
     path: String,
     params: [String: String],

@@ -11,10 +11,10 @@ protocol NetWorkerServiceProtocol {
 
   var host: String { get }
 
-    func perform<Model>(
-      type: RequestType,
-      path: String,
-      params: [String: String],
-      completion: @escaping (Result<Model, NetworkFetchingError>) -> ()
-    ) where Model : Decodable
+  func perform<Model>(
+    type: RequestType,
+    path: String,
+    params: [String: String],
+    completion: @escaping (Result<Model, NetworkFetchingError>) -> ()
+  ) where Model : Decodable
 }
