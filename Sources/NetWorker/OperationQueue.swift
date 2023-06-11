@@ -24,14 +24,14 @@ final class FetchingDataOperation<T>: Operation where T: Decodable {
   )
   
   private let request: URLRequest?
-  private let completion: (Result<T, NetworkFetchingError>) -> Void
+  private let completion: (Result<T, NetWorkerFetchingError>) -> Void
   
   private let delayCounter: ExponentialBackoffDelayCalculator
   
   init(
     request: URLRequest?,
     delayCounter: ExponentialBackoffDelayCalculator,
-    completion: @escaping (Result<T, NetworkFetchingError>) -> Void
+    completion: @escaping (Result<T, NetWorkerFetchingError>) -> Void
   ) {
     self.request = request
     self.delayCounter = delayCounter
@@ -82,7 +82,7 @@ final class FetchingDataOperation<T>: Operation where T: Decodable {
   
   override func main() {
     guard let request = request else {
-      completion(.failure(NetworkFetchingError.unableToMakeRequest))
+      completion(.failure(NetWorkerFetchingError.unableToMakeRequest))
       finish()
       return
     }
@@ -109,7 +109,7 @@ final class FetchingDataOperation<T>: Operation where T: Decodable {
       
       do {
         guard let data = data else {
-          self?.completion(.failure(NetworkFetchingError.noResponseData))
+          self?.completion(.failure(NetWorkerFetchingError.noResponseData))
           self?.finish()
           return
         }

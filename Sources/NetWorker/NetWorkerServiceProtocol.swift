@@ -15,6 +15,6 @@ protocol NetWorkerServiceProtocol {
     type: RequestType,
     path: String,
     params: [String: String],
-    completion: @escaping (Result<Model, NetworkFetchingError>) -> ()
+    completion: @escaping (Result<Model, NetWorkerFetchingError>) -> ()
   ) where Model : Decodable
 }

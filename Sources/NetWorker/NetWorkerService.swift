@@ -20,7 +20,7 @@ public class NetWorkerService: NetWorkerServiceProtocol {
     type: RequestType,
     path: String,
     params: [String: String],
-    completion: @escaping (Result<Model, NetworkFetchingError>) -> ()
+    completion: @escaping (Result<Model, NetWorkerFetchingError>) -> ()
   ) where Model : Decodable {
     let operation = FetchingDataOperation(
       request: requestCreator.createRequest(type: type, host: host, path: path, params: params),
